@@ -5,8 +5,14 @@ while True:
     name = input("Введіть ім'я: ")  # Запитуємо ім'я студента
     if name == "stop":              # Якщо введено "stop", завершуємо цикл
         break
-    grade = int(input("Введіть оцінку: "))  # Запитуємо оцінку студента
-    results[name] = grade                   # Зберігаємо ім'я та оцінку в словнику
+    # Перевіряємо правильність введеної оцінки
+    while True:
+        grade = int(input("Введіть оцінку (0-12): "))
+        if 0 <= grade <= 12:
+            break
+        else:
+            print("Неправильно введено оцінку, спробуйте ще раз.")
+    results[name] = grade  # Зберігаємо ім'я та оцінку в словнику
 # Виводимо список усіх студентів та їхні оцінки
 print("Студенти:")
 for n in results:
@@ -23,3 +29,5 @@ print("Відмінники:", len(exelent), "→", ', '.join(exelent))
 print("Хорошисти:", len(good), "→", ', '.join(good))
 print("Відстаючі:", len(weak), "→", ', '.join(weak))
 print("Не здали:", len(fail), "→", ', '.join(fail))
+
+
